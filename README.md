@@ -1,3 +1,3 @@
 # UniversalTuringMachine
 
-Universal turing machine made in java
+Universal turing machine made in java and python
