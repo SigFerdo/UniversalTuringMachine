@@ -17,7 +17,7 @@ public class MdtUniversale /* extends HashMap<Integer,String> */ {
 	private int testa;
 	private String stringaInserita;
 	private int maxComputazioni;
-	private List<String> nastroStringa;
+	private LinkedList<String> nastroStringa;
 	private BinarieTransizioni bt;
 
 	public MdtUniversale() {
@@ -151,7 +151,7 @@ public class MdtUniversale /* extends HashMap<Integer,String> */ {
 		
 		String stringaStampata = "";
 		for(String s : nastroStampato) {
-			String sASCII = bt.convertiStringaInBinario(s);
+			String sASCII = bt.convertiBinarioInStringa(s);
 			stringaStampata += sASCII;
 			stringaStampata += " ";
 		}

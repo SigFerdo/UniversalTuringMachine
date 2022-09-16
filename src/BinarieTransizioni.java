@@ -69,8 +69,14 @@ public class BinarieTransizioni extends HashMap<Integer,String>{
 		}
 		else {
 			char[] chars = str.toCharArray();
+			boolean first = true;
 			for(char c: chars) {
-				bin += " " + Integer.toBinaryString(c);
+				if(first) {
+					bin +=Integer.toBinaryString(c);
+					first = !first;
+				}
+				else
+					bin += " " + Integer.toBinaryString(c);
 			}
 		}
 		return bin;
@@ -132,10 +138,10 @@ public class BinarieTransizioni extends HashMap<Integer,String>{
 		for(HashMap<String, String> tr : lista_transizioni) {
 			HashMap<String, String> transizione_binaria = new HashMap<String, String>();
 			transizione_binaria.put("stato_partenza", convertiStatoInBinario(tr.get("stato_partenza")));
-			transizione_binaria.put("simbolo_letto", convertiStatoInBinario(tr.get("simbolo_letto")));
-			transizione_binaria.put("simbolo_scritto", convertiStatoInBinario(tr.get("simbolo_scritto")));
-			transizione_binaria.put("movimento", convertiStatoInBinario(tr.get("movimento")));
-			transizione_binaria.put("stato_arrivo", convertiStatoInBinario(tr.get("stato_partenza")));
+			transizione_binaria.put("simbolo_letto", convertiStringaInBinario(tr.get("simbolo_letto")));
+			transizione_binaria.put("simbolo_scritto", convertiStringaInBinario(tr.get("simbolo_scritto")));
+			transizione_binaria.put("movimento", convertiMovimentoInBinario(tr.get("movimento")));
+			transizione_binaria.put("stato_arrivo", convertiStatoInBinario(tr.get("stato_arrivo")));
 		
 			lista_transizioni_binarie.add(transizione_binaria);
 		}
@@ -146,8 +152,8 @@ public class BinarieTransizioni extends HashMap<Integer,String>{
 		return String.join("", l);
 	}
 	
-	public List<String> stringaALista(String s){
-		return List.of(s.split(" "));
+	public LinkedList<String> stringaALista(String s){
+		return new LinkedList<String>(List.of(s.split(" ")));
 	}
 	
 	public void stampaListaTransizioni(List<HashMap<String, String>> ltr) {
